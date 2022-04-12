@@ -29,7 +29,7 @@ process combineFilterFastq {
 
 process indexLRA {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file reference
     output:
