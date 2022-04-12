@@ -1,10 +1,11 @@
 name: epi2melabs-wf-human-sv
 channels:
     - epi2melabs
-    - bioconda
     - conda-forge
+    - bioconda
     - defaults
 dependencies:
+    - pip
     - python==3.8.*
     - gcc_linux-64
     - make
