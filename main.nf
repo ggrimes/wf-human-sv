@@ -9,7 +9,7 @@ include { fastq_ingress } from './lib/fastqingress'
 // Workflow processes
 process combineFilterFastq {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         tuple path(directory), val(sample_name), val(sample_type)
     output:
@@ -144,7 +144,7 @@ process mosdepth {
 
 process filterCalls {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file vcf
         file mosdepth_bed
@@ -172,7 +172,7 @@ process filterCalls {
 
 process sortVCF {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file vcf
     output:
@@ -187,7 +187,7 @@ process sortVCF {
 
 process indexVCF {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file vcf
     output:
@@ -204,7 +204,7 @@ process indexVCF {
 // for further details. 
 process getTruthset {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     output:
         path "*.vcf.gz", emit: truthset_vcf_gz
         path "*.vcf.gz.tbi",  emit: truthset_vcf_tbi
@@ -231,7 +231,7 @@ process getTruthset {
 
 process intersectBedWithTruthset {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file target_bed
         file truthset_bed
@@ -255,7 +255,7 @@ process intersectBedWithTruthset {
 
 process getAllChromosomesBed {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file reference
     output:
@@ -268,7 +268,7 @@ process getAllChromosomesBed {
 
 process excludeNonIndels {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file calls_vcf
     output:
@@ -287,7 +287,7 @@ process excludeNonIndels {
 
 process truvari {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file reference
         file calls_vcf
@@ -316,7 +316,7 @@ process truvari {
 
 process getVersions {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     output:
         path "versions.txt"
     script:
@@ -338,7 +338,7 @@ process getVersions {
 
 process getParams {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     output:
         path "params.json"
     script:
@@ -352,7 +352,7 @@ process getParams {
 
 process report {
     label "wf_human_sv"
-    cpus 1
+    cpus 2
     input:
         file vcf
         file read_stats
